@@ -19,4 +19,9 @@ class Cart
     {
         return $this->items;
     }
+
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
 }
