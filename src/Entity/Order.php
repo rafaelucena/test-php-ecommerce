@@ -15,6 +15,9 @@ class Order
     /** @var float */
     private $totalPrice;
 
+    /** @var float */
+    private $totalPriceGross;
+
     /**
      * @param integer $id
      * @param array $items
