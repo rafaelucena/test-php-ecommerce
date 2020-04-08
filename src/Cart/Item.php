@@ -16,6 +16,9 @@ class Item
     /** @var float */
     private $totalPrice;
 
+    /** @var float */
+    private $totalPriceGross;
+
     /**
      * @param Product $product
      * @param integer $quantity
@@ -101,5 +104,13 @@ class Item
     public function getTotalPrice(): float
     {
         return $this->totalPrice;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalPriceGross(): float
+    {
+        return $this->totalPriceGross;
     }
 }
