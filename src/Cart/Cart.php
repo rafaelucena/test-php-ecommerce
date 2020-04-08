@@ -137,9 +137,9 @@ class Cart
      * @param integer $id
      * @return Order
      */
-    public function checkout(int $id): Order
+    public function checkout(int $id, string $code = ''): Order
     {
-        $order = new Order($id, $this->items);
+        $order = new Order($id, $this->items, $code);
         $this->resetCart();
         return $order;
     }
