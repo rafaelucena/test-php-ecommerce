@@ -31,6 +31,13 @@ class Cart
         return $this;
     }
 
+    public function setQuantity($product, $quantity)
+    {
+        $this->items[$product->getId()] = new Item($product, $quantity);
+        $this->setTotalPrice();
+        return $this;
+    }
+
     public function getItems()
     {
         return $this->items;
