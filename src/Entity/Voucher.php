@@ -2,6 +2,8 @@
 
 namespace Recruitment\Entity;
 
+use Recruitment\Entity\Exception\InvalidVoucherCodeException;
+
 class Voucher
 {
     private const alphanumeric = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZ';
@@ -18,6 +20,40 @@ class Voucher
             $character = self::alphanumeric[$x];
             $this->alphanumbers[$character] = $x;
         }
+    }
+
+    public function setCode($code)
+    {
+        if ($code === '') {
+            $this->code = '';
+            $this->discount = 0;
+            return $this;
+        }
+
+        if ($this->canDivideBy($code[0], [5]) === false) {
+            throw new InvalidVoucherCodeException();
+        } elseif ($this->canDivideBy($code[1], [4]) === false) {
+            throw new InvalidVoucherCodeException();
+        } elseif ($this->canDivideBy($code[2], [3]) === false) {
+            throw new InvalidVoucherCodeException();
+        } elseif ($this->canDivideBy($code[3], [6, 4, 2]) === false) {
+            throw new InvalidVoucherCodeException();
+        }
+
+        $this->code = $code;
+        return $this;
+    }
+
+    private function canDivideBy($character, $divisors)
+    {
+        $number = $this->alphanumbers[$character];
+        foreach ($divisors as $divisor) {
+            if ($number % $divisor === 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function getCode()
