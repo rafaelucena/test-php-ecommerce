@@ -2,10 +2,18 @@
 
 namespace Recruitment\Entity;
 
+use Recruitment\Entity\Exception\InvalidTaxValueException;
 use Recruitment\Entity\Exception\InvalidUnitPriceException;
 
 class Product
 {
+    private const TAX_TYPES = [
+        0,
+        5,
+        8,
+        23,
+    ];
+
     /** @var integer */
     private $id;
 
@@ -116,9 +124,13 @@ class Product
     /**
      * @param integer $tax
      * @return self
+     * @throws InvalidTaxValueException
      */
     public function setTax(int $tax): self
     {
+        if (in_array($tax, self::TAX_TYPES) === false) {
+            throw new InvalidTaxValueException();
+        }
         $this->tax = $tax;
         return $this;
     }
