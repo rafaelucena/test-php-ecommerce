@@ -18,6 +18,7 @@ class Product
     /** @var integer */
     private $minimumQuantity;
 
+    /** @var integer */
     private $tax;
 
     public function __construct()
@@ -110,5 +111,23 @@ class Product
     public function getMinimumQuantity(): int
     {
         return $this->minimumQuantity;
+    }
+
+    /**
+     * @param integer $tax
+     * @return self
+     */
+    public function setTax(int $tax): self
+    {
+        $this->tax = $tax;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getTax(): int
+    {
+        return $this->tax;
     }
 }
