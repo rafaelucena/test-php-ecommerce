@@ -99,6 +99,14 @@ class Cart
     }
 
     /**
+     * @return float
+     */
+    public function getTotalPriceGross(): float
+    {
+        return $this->totalPriceGross;
+    }
+
+    /**
      * @param integer $index
      * @return Item
      * @throws \OutOfBoundsException
