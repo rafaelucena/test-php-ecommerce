@@ -8,6 +8,8 @@ class Cart
 {
     private $items = [];
 
+    private $totalPrice;
+
     public function addProduct($product, $quantity)
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
