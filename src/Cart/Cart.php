@@ -96,6 +96,7 @@ class Cart
     /**
      * @param integer $index
      * @return Item
+     * @throws \OutOfBoundsException
      */
     public function getItem(int $index): Item
     {
