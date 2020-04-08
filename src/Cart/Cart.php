@@ -3,14 +3,22 @@
 namespace Recruitment\Cart;
 
 use Recruitment\Cart\Item;
+use Recruitment\Entity\Product;
 
 class Cart
 {
-    private $items = [];
+    /** @var array */
+    private $items;
 
+    /** @var float */
     private $totalPrice;
 
-    public function addProduct($product, $quantity = 1)
+    /**
+     * @param Product $product
+     * @param integer $quantity
+     * @return self
+     */
+    public function addProduct(Product $product, int $quantity = 1): self
     {
         if (isset($this->items[$product->getId()]) === false) {
             $this->items[$product->getId()] = new Item($product, $quantity);
@@ -24,26 +32,41 @@ class Cart
         return $this;
     }
 
-    public function removeProduct($product)
+    /**
+     * @param Product $product
+     * @return self
+     */
+    public function removeProduct(Product $product): self
     {
         unset($this->items[$product->getId()]);
         $this->setTotalPrice();
         return $this;
     }
 
-    public function setQuantity($product, $quantity)
+    /**
+     * @param Product $product
+     * @param integer $quantity
+     * @return self
+     */
+    public function setQuantity(Product $product, int $quantity): self
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
         $this->setTotalPrice();
         return $this;
     }
 
-    public function getItems()
+    /**
+     * @return array
+     */
+    public function getItems(): array
     {
         return $this->items;
     }
 
-    private function setTotalPrice()
+    /**
+     * @return self
+     */
+    private function setTotalPrice(): self
     {
         $this->totalPrice = 0;
         foreach ($this->items as $item) {
@@ -52,12 +75,19 @@ class Cart
         return $this;
     }
 
-    public function getTotalPrice()
+    /**
+     * @return float
+     */
+    public function getTotalPrice(): float
     {
         return $this->totalPrice;
     }
 
-    public function getItem($index)
+    /**
+     * @param integer $index
+     * @return Item
+     */
+    public function getItem(int $index): Item
     {
         $count = 0;
         foreach ($this->items as $item) {
