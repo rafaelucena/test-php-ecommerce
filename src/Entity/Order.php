@@ -18,14 +18,17 @@ class Order
     /** @var float */
     private $totalPriceGross;
 
+    private $voucher;
+
     /**
      * @param integer $id
      * @param array $items
      */
-    public function __construct(int $id, array $items)
+    public function __construct(int $id, array $items, string $code = '')
     {
         $this->id = $id;
         $this->setItemsAndTotalPriceData($items);
+        $this->voucher = (new Voucher())->setCode($code);
     }
 
     /**
@@ -71,6 +74,9 @@ class Order
             'items' => $this->items,
             'total_price' => $this->totalPrice,
             'total_price_gross' => $this->totalPriceGross,
+            'total_price_gross_discount' => ($this->totalPriceGross * $this->voucher->getDiscount()) / 100,
+            'total_price_gross_discount_applied' => $this->totalPriceGross - ($this->totalPriceGross * $this->voucher->getDiscount()) / 100,
+            'discount' => $this->voucher->getDiscount(),
         ];
     }
 }
