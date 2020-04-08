@@ -67,6 +67,6 @@ class Cart
             $count++;
         }
 
-        return null;
+        throw new \OutOfBoundsException();
     }
 }
