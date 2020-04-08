@@ -18,11 +18,17 @@ class Product
     /** @var integer */
     private $minimumQuantity;
 
+    private $tax;
+
     public function __construct()
     {
+        $nameRange = ['Quesadilla', 'Cachaca', 'Bier', 'Churrasco', 'Abacate', 'Goiaba', 'Watermelon', 'Kapusta'];
+
         $this->id = 0;
         $this->unitPrice = 0;
         $this->minimumQuantity = 1;
+        $this->name = $nameRange[random_int(0, count($nameRange) - 1)];
+        $this->tax = 0;
     }
 
     /**
