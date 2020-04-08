@@ -42,7 +42,7 @@ class Cart
     private function setItem(Product $product, int $quantity): void
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
-        $this->setTotalPrice();
+        $this->setTotalPrices();
     }
 
     /**
@@ -52,7 +52,7 @@ class Cart
     public function removeProduct(Product $product): self
     {
         unset($this->items[$product->getId()]);
-        $this->setTotalPrice();
+        $this->setTotalPrices();
         return $this;
     }
 
@@ -64,7 +64,7 @@ class Cart
     public function setQuantity(Product $product, int $quantity): self
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
-        $this->setTotalPrice();
+        $this->setTotalPrices();
         return $this;
     }
 
@@ -79,11 +79,13 @@ class Cart
     /**
      * @return self
      */
-    private function setTotalPrice(): self
+    private function setTotalPrices(): self
     {
         $this->totalPrice = 0;
+        $this->totalPriceGross = 0;
         foreach ($this->items as $item) {
             $this->totalPrice += $item->getTotalPrice();
+            $this->totalPriceGross += $item->getTotalPriceGross();
         }
         return $this;
     }
