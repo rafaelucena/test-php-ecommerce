@@ -19,6 +19,7 @@ class Item
     /**
      * @param Product $product
      * @param integer $quantity
+     * @throws \InvalidArgumentException
      */
     public function __construct(Product $product, int $quantity)
     {
@@ -65,6 +66,7 @@ class Item
     /**
      * @param integer $quantity
      * @return self
+     * @throws QuantityTooLowException
      */
     public function setQuantity(int $quantity): self
     {
