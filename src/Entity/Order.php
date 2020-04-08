@@ -9,4 +9,9 @@ class Order
     private $items;
 
     private $totalPrice;
+
+    public function __construct($id, $items)
+    {
+        $this->id = $id;
+    }
 }
