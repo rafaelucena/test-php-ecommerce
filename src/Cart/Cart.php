@@ -3,6 +3,7 @@
 namespace Recruitment\Cart;
 
 use Recruitment\Cart\Item;
+use Recruitment\Entity\Order;
 use Recruitment\Entity\Product;
 
 class Cart
@@ -107,5 +108,18 @@ class Cart
         }
 
         throw new \OutOfBoundsException();
+    }
+
+    private function resetCart()
+    {
+        $this->items = [];
+        $this->totalPrice = 0;
+    }
+
+    public function checkout($id)
+    {
+        $order = new Order($id, $this->items);
+        $this->resetCart();
+        return $order;
     }
 }
