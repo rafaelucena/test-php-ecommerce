@@ -15,6 +15,10 @@ class Order
     /** @var float */
     private $totalPrice;
 
+    /**
+     * @param integer $id
+     * @param array $items
+     */
     public function __construct(int $id, array $items)
     {
         $this->id = $id;
