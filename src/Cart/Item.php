@@ -92,7 +92,7 @@ class Item
     /**
      * @return self
      */
-    public function setTotalPrices(): self
+    private function setTotalPrices(): self
     {
         $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
         $this->totalPriceGross = $this->totalPrice + (($this->totalPrice * $this->product->getTax()) / 100);
