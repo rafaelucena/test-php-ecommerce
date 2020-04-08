@@ -2,12 +2,17 @@
 
 namespace Recruitment\Cart;
 
+use Recruitment\Entity\Product;
+
 class Item
 {
+    /** @var Product */
     private $product;
 
+    /** @var integer */
     private $quantity;
 
+    /** @var float */
     private $totalPrice;
 
     public function __construct($product, $quantity)
