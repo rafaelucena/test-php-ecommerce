@@ -21,15 +21,24 @@ class Cart
     public function addProduct(Product $product, int $quantity = 1): self
     {
         if (isset($this->items[$product->getId()]) === false) {
-            $this->items[$product->getId()] = new Item($product, $quantity);
-            $this->setTotalPrice();
+            $this->setItem($product, $quantity);
             return $this;
         }
 
         $existingProduct = $this->items[$product->getId()];
-        $this->items[$product->getId()] = new Item($product, $existingProduct->getQuantity() + $quantity);
-        $this->setTotalPrice();
+        $this->setItem($product, $existingProduct->getQuantity() + $quantity);
         return $this;
+    }
+
+    /**
+     * @param Product $product
+     * @param integer $quantity
+     * @return void
+     */
+    private function setItem(Product $product, int $quantity): void
+    {
+        $this->items[$product->getId()] = new Item($product, $quantity);
+        $this->setTotalPrice();
     }
 
     /**
