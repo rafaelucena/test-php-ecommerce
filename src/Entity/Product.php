@@ -53,4 +53,10 @@ class Product
     {
         return $this->unitPrice;
     }
+
+    public function setMinimumQuantity($minimumQuantity)
+    {
+        $this->minimumQuantity = $minimumQuantity;
+        return $this;
+    }
 }
