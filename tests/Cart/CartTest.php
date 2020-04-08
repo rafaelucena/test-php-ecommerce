@@ -123,7 +123,7 @@ class CartTest extends TestCase
         $cart->addProduct($this->buildTestProduct(1, 15000, 5));
         $cart->addProduct($this->buildTestProduct(2, 10000, 8), 2);
 
-        $order = $cart->checkout(7);
+        $order = $cart->checkout(7, 'A8C6');
 
         $expectedArray = [
             'id' => 7,
@@ -145,6 +145,9 @@ class CartTest extends TestCase
             ],
             'total_price' => 35000,
             'total_price_gross' => 37350,
+            'total_price_gross_discount' => 7470,
+            'total_price_gross_discount_applied' => 29880,
+            'discount' => 20,
         ];
 
         $this->assertCount(0, $cart->getItems());
