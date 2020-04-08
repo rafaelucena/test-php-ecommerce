@@ -10,6 +10,7 @@ class Product
     /** @var integer */
     private $unitPrice;
 
+    /** @var integer */
     private $minimumQuantity;
 
     public function __construct()
@@ -55,13 +56,20 @@ class Product
         return $this->unitPrice;
     }
 
-    public function setMinimumQuantity($minimumQuantity)
+    /**
+     * @param integer $minimumQuantity
+     * @return self
+     */
+    public function setMinimumQuantity(int $minimumQuantity): self
     {
         $this->minimumQuantity = $minimumQuantity;
         return $this;
     }
 
-    public function getMinimumQuantity()
+    /**
+     * @return integer
+     */
+    public function getMinimumQuantity(): int
     {
         return $this->minimumQuantity;
     }
