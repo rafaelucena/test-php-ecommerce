@@ -8,10 +8,13 @@ class Voucher
 {
     private const alphanumeric = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZ';
 
+    /** @var array */
     private $alphanumbers = [];
 
+    /** @var string */
     private $code;
 
+    /** @var int */
     private $discount;
 
     public function __construct()
@@ -22,9 +25,13 @@ class Voucher
         }
     }
 
-    public function setCode($code)
+    /**
+     * @param string $code
+     * @return self
+     */
+    public function setCode(string $code): self
     {
-        if ($code === '') {
+        if ($code === '' || strlen($code) !== 4) {
             $this->code = '';
             $this->discount = 0;
             return $this;
@@ -45,7 +52,12 @@ class Voucher
         return $this;
     }
 
-    private function canDivideBy($character, $divisors)
+    /**
+     * @param string $character
+     * @param array $divisors
+     * @return boolean
+     */
+    private function canDivideBy(string $character, array $divisors): bool
     {
         $number = $this->alphanumbers[$character];
         foreach ($divisors as $divisor) {
@@ -57,7 +69,10 @@ class Voucher
         return false;
     }
 
-    private function setDiscount()
+    /**
+     * @return void
+     */
+    private function setDiscount(): void
     {
         if ($this->canDivideBy($this->code[3], [6])) {
             $this->discount = 20;
@@ -68,12 +83,18 @@ class Voucher
         }
     }
 
-    public function getCode()
+    /**
+     * @return string
+     */
+    public function getCode(): string
     {
         return $this->code;
     }
 
-    public function getDiscount()
+    /**
+     * @return integer
+     */
+    public function getDiscount(): int
     {
         return $this->discount;
     }
