@@ -5,6 +5,9 @@ namespace Recruitment\Entity;
 class Product
 {
     /** @var integer */
+    private $id;
+
+    /** @var integer */
     private $unitPrice;
 
     /**
