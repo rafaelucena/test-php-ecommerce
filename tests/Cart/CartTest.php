@@ -133,12 +133,14 @@ class CartTest extends TestCase
                     'quantity' => 1,
                     'total_price' => 15000,
                     'tax' => '5%',
+                    'total_price_gross' => 15750.0,
                 ],
                 [
                     'id' => 2,
                     'quantity' => 2,
                     'total_price' => 20000,
                     'tax' => '8%',
+                    'total_price_gross' => 21600.0
                 ],
             ],
             'total_price' => 35000,
