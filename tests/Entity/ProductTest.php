@@ -28,4 +28,14 @@ class ProductTest extends TestCase
         $product = new Product();
         $product->setMinimumQuantity(0);
     }
+
+    /**
+     * @test
+     * @expectedException \Recruitment\Entity\Exception\InvalidTaxValueException
+     */
+    public function itThrowsExceptionForInvalidTaxSet(): void
+    {
+        $product = new Product();
+        $product->setTax(3);
+    }
 }
