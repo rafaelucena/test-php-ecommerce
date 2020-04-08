@@ -14,6 +14,9 @@ class Cart
     /** @var float */
     private $totalPrice;
 
+    /** @var float */
+    private $totalPriceGross;
+
     /**
      * @param Product $product
      * @param integer $quantity
