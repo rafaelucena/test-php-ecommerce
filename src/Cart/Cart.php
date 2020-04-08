@@ -135,6 +135,7 @@ class Cart
 
     /**
      * @param integer $id
+     * @param string $code
      * @return Order
      */
     public function checkout(int $id, string $code = ''): Order
