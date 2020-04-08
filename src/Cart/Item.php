@@ -31,7 +31,7 @@ class Item
         }
         $this->setProduct($product);
         $this->setQuantity($quantity);
-        $this->setTotalPrice();
+        $this->setTotalPrices();
     }
 
     /**
@@ -77,7 +77,7 @@ class Item
             throw new QuantityTooLowException();
         }
         $this->quantity = $quantity;
-        $this->setTotalPrice();
+        $this->setTotalPrices();
         return $this;
     }
 
@@ -92,9 +92,10 @@ class Item
     /**
      * @return self
      */
-    public function setTotalPrice(): self
+    public function setTotalPrices(): self
     {
         $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
+        $this->totalPriceGross = $this->totalPrice + (($this->totalPrice * $this->product->getTax()) / 100);
         return $this;
     }
 
