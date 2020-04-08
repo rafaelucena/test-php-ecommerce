@@ -70,6 +70,7 @@ class Order
             'id' => $this->id,
             'items' => $this->items,
             'total_price' => $this->totalPrice,
+            'total_price_gross' => $this->totalPriceGross,
         ];
     }
 }

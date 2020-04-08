@@ -144,6 +144,7 @@ class CartTest extends TestCase
                 ],
             ],
             'total_price' => 35000,
+            'total_price_gross' => 37350,
         ];
 
         $this->assertCount(0, $cart->getItems());
