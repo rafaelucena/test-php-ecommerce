@@ -34,4 +34,18 @@ class Cart
     {
         return $this->totalPrice;
     }
+
+    public function getItem($index)
+    {
+        $count = 0;
+        foreach ($this->items as $item)
+        {
+            if ($count === $index) {
+                return $item;
+            }
+            $count++;
+        }
+
+        return null;
+    }
 }
