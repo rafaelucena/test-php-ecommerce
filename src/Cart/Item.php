@@ -8,10 +8,13 @@ class Item
 
     private $quantity;
 
+    private $totalPrice;
+
     public function __construct($product, $quantity)
     {
         $this->setProduct($product);
         $this->setQuantity($quantity);
+        $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
     }
 
     private function setProduct($product)
