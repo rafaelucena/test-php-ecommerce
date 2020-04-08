@@ -17,7 +17,7 @@ class Item
 
     public function __construct(Product $product, int $quantity)
     {
-        if ($this->isValidConstruct($product, $quantity) === false) {
+        if ($this->isValidProductAndQuantity($product, $quantity) === false) {
             throw new \InvalidArgumentException();
         }
         $this->setProduct($product);
@@ -25,7 +25,7 @@ class Item
         $this->setTotalPrice();
     }
 
-    private function isValidConstruct($product, $quantity)
+    private function isValidProductAndQuantity($product, $quantity)
     {
         if ($product->getMinimumQuantity() > $quantity) {
             return false;
