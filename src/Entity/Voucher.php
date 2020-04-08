@@ -11,4 +11,12 @@ class Voucher
     private $code;
 
     private $discount;
+
+    public function __construct()
+    {
+        for ($x = 1; $x < strlen(self::alphanumeric); $x++) {
+            $character = self::alphanumeric[$x];
+            $this->alphanumbers[$character] = $x;
+        }
+    }
 }
