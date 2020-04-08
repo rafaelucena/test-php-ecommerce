@@ -2,6 +2,7 @@
 
 namespace Recruitment\Cart;
 
+use Recruitment\Cart\Exception\QuantityTooLowException;
 use Recruitment\Entity\Product;
 
 class Item
@@ -56,9 +57,13 @@ class Item
      * @param integer $quantity
      * @return self
      */
-    private function setQuantity(int $quantity): self
+    public function setQuantity(int $quantity): self
     {
+        if ($this->isValidProductAndQuantity($this->product, $quantity) === false) {
+            throw new QuantityTooLowException();
+        }
         $this->quantity = $quantity;
+        $this->setTotalPrice();
         return $this;
     }
 
