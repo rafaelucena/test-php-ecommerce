@@ -21,7 +21,7 @@ class Cart
         return $this->items;
     }
 
-    public function setTotalPrice()
+    private function setTotalPrice()
     {
         $this->totalPrice = 0;
         foreach ($this->items as $item) {
