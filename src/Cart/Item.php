@@ -43,4 +43,9 @@ class Item
     {
         $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
     }
+
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
 }
