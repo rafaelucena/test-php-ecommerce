@@ -13,11 +13,21 @@ class Cart
     public function addProduct($product, $quantity)
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
+        $this->setTotalPrice();
     }
 
     public function getItems()
     {
         return $this->items;
+    }
+
+    public function setTotalPrice()
+    {
+        $this->totalPrice = 0;
+        foreach ($this->items as $item) {
+            $this->totalPrice += $item->getTotalPrice();
+        }
+        return $this;
     }
 
     public function getTotalPrice()
