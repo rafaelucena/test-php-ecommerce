@@ -23,4 +23,13 @@ class Order
             $this->totalPrice += $item->getTotalPrice();
         }
     }
+
+    public function getDataForView()
+    {
+        return [
+            'id' => $this->id,
+            'items' => $this->items,
+            'total_price' => $this->totalPrice,
+        ];
+    }
 }
