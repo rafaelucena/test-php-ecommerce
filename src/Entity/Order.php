@@ -13,5 +13,14 @@ class Order
     public function __construct($id, $items)
     {
         $this->id = $id;
+        /** @var Item $item */
+        foreach ($items as $item) {
+            $this->items[] = [
+                'id' => $item->getProduct()->getId(),
+                'quantity' => $item->getQuantity(),
+                'total_price' => $item->getTotalPrice(),
+            ];
+            $this->totalPrice += $item->getTotalPrice();
+        }
     }
 }
