@@ -51,6 +51,7 @@ class Order
             'id' => $item->getProduct()->getId(),
             'quantity' => $item->getQuantity(),
             'total_price' => $item->getTotalPrice(),
+            'tax' => $item->getProduct()->getTax() . '%',
         ];
     }
 
