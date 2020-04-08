@@ -17,6 +17,13 @@ class Cart
         return $this;
     }
 
+    public function removeProduct($product)
+    {
+        unset($this->items[$product->getId()]);
+        $this->setTotalPrice();
+        return $this;
+    }
+
     public function getItems()
     {
         return $this->items;
