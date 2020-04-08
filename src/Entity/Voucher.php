@@ -41,6 +41,7 @@ class Voucher
         }
 
         $this->code = $code;
+        $this->setDiscount();
         return $this;
     }
 
@@ -54,6 +55,17 @@ class Voucher
         }
 
         return false;
+    }
+
+    private function setDiscount()
+    {
+        if ($this->canDivideBy($this->code[3], [6])) {
+            $this->discount = 20;
+        } elseif ($this->canDivideBy($this->code[3], [4])) {
+            $this->discount = 15;
+        } else {
+            $this->discount = 10;
+        }
     }
 
     public function getCode()
