@@ -10,6 +10,8 @@ class Product
     /** @var integer */
     private $unitPrice;
 
+    private $minimumQuantity;
+
     public function __construct()
     {
         $this->id = 0;
