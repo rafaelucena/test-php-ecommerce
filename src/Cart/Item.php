@@ -20,9 +20,19 @@ class Item
         return $this;
     }
 
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
     private function setQuantity($quantity)
     {
         $this->quantity = $quantity;
         return $this;
+    }
+
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 }
