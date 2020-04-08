@@ -10,6 +10,12 @@ class Product
     /** @var integer */
     private $unitPrice;
 
+    public function __construct()
+    {
+        $this->id = 0;
+        $this->unitPrice = 0;
+    }
+
     /**
      * @param integer $id
      * @return self
