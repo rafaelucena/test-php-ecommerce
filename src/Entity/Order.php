@@ -3,6 +3,7 @@
 namespace Recruitment\Entity;
 
 use Recruitment\Cart\Item;
+use Recruitment\Entity\Voucher;
 
 class Order
 {
@@ -18,11 +19,13 @@ class Order
     /** @var float */
     private $totalPriceGross;
 
+    /** @var Voucher */
     private $voucher;
 
     /**
      * @param integer $id
      * @param array $items
+     * @param string $code
      */
     public function __construct(int $id, array $items, string $code = '')
     {
