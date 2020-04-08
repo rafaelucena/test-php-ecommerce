@@ -16,6 +16,10 @@ class Item
     /** @var float */
     private $totalPrice;
 
+    /**
+     * @param Product $product
+     * @param integer $quantity
+     */
     public function __construct(Product $product, int $quantity)
     {
         if ($this->isValidProductAndQuantity($product, $quantity) === false) {
@@ -26,7 +30,12 @@ class Item
         $this->setTotalPrice();
     }
 
-    private function isValidProductAndQuantity($product, $quantity)
+    /**
+     * @param Product $product
+     * @param integer $quantity
+     * @return boolean
+     */
+    private function isValidProductAndQuantity(Product $product, int $quantity): bool
     {
         if ($product->getMinimumQuantity() > $quantity) {
             return false;
