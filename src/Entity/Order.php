@@ -2,21 +2,30 @@
 
 namespace Recruitment\Entity;
 
+use Recruitment\Cart\Item;
+
 class Order
 {
+    /** @var int */
     private $id;
 
+    /** @var array */
     private $items;
 
+    /** @var float */
     private $totalPrice;
 
-    public function __construct($id, $items)
+    public function __construct(int $id, array $items)
     {
         $this->id = $id;
         $this->setItemsAndTotalPriceData($items);
     }
 
-    private function setItemsAndTotalPriceData($items)
+    /**
+     * @param array $items
+     * @return void
+     */
+    private function setItemsAndTotalPriceData(array $items): void
     {
         $this->items = [];
         $this->totalPrice = 0;
@@ -28,7 +37,11 @@ class Order
         }
     }
 
-    private function setItemData($item)
+    /**
+     * @param Item $item
+     * @return array
+     */
+    private function setItemData(Item $item): array
     {
         return [
             'id' => $item->getProduct()->getId(),
@@ -37,7 +50,10 @@ class Order
         ];
     }
 
-    public function getDataForView()
+    /**
+     * @return array
+     */
+    public function getDataForView(): array
     {
         return [
             'id' => $this->id,
