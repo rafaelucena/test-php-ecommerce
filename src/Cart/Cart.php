@@ -10,7 +10,7 @@ class Cart
 
     private $totalPrice;
 
-    public function addProduct($product, $quantity)
+    public function addProduct($product, $quantity = 1)
     {
         if (isset($this->items[$product->getId()]) === false) {
             $this->items[$product->getId()] = new Item($product, $quantity);
