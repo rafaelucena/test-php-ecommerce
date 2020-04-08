@@ -12,7 +12,7 @@ class VoucherTest extends TestCase
     /**
      * @test
      */
-    public function isDiscountValid()
+    public function isDiscountValid(): void
     {
         $voucher = new Voucher();
 
@@ -30,7 +30,7 @@ class VoucherTest extends TestCase
      * @test
      * @expectedException \Recruitment\Entity\Exception\InvalidVoucherCodeException
      */
-    public function itThrowsExceptionInvalidVoucherCode()
+    public function itThrowsExceptionInvalidVoucherCode(): void
     {
         $voucher = new Voucher();
         $voucher->setCode('A8C5');
