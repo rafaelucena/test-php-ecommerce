@@ -110,13 +110,20 @@ class Cart
         throw new \OutOfBoundsException();
     }
 
-    private function resetCart()
+    /**
+     * @return void
+     */
+    private function resetCart(): void
     {
         $this->items = [];
         $this->totalPrice = 0;
     }
 
-    public function checkout($id)
+    /**
+     * @param integer $id
+     * @return Order
+     */
+    public function checkout(int $id): Order
     {
         $order = new Order($id, $this->items);
         $this->resetCart();
