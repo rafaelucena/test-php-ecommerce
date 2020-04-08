@@ -10,13 +10,13 @@ class Product
     /** @var integer */
     private $unitPrice;
 
-    public function setId($id)
+    public function setId(int $id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
