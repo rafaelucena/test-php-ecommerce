@@ -14,7 +14,7 @@ class Item
     {
         $this->setProduct($product);
         $this->setQuantity($quantity);
-        $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
+        $this->setTotalPrice();
     }
 
     private function setProduct($product)
@@ -37,5 +37,10 @@ class Item
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    public function setTotalPrice()
+    {
+        $this->totalPrice = $this->product->getUnitPrice() * $this->quantity;
     }
 }
