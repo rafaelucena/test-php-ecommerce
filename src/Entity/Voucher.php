@@ -19,4 +19,14 @@ class Voucher
             $this->alphanumbers[$character] = $x;
         }
     }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
 }
