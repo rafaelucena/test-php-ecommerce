@@ -9,6 +9,9 @@ class Product
     /** @var integer */
     private $id;
 
+    /** @var string */
+    private $name;
+
     /** @var integer */
     private $unitPrice;
 
@@ -19,7 +22,7 @@ class Product
     {
         $this->id = 0;
         $this->unitPrice = 0;
-        $this->minimumQuantity = 0;
+        $this->minimumQuantity = 1;
     }
 
     /**
@@ -41,6 +44,24 @@ class Product
     }
 
     /**
+     * @param string $name
+     * @return self
+     */
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @param integer $price
      * @return self
      * @throws InvalidUnitPriceException
@@ -51,7 +72,7 @@ class Product
             throw new InvalidUnitPriceException();
         }
 
-        $this->unitPrice = $price;
+        $this->unitPrice = round($price, 2);
         return $this;
     }
 
