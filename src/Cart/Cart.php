@@ -14,6 +14,7 @@ class Cart
     {
         $this->items[$product->getId()] = new Item($product, $quantity);
         $this->setTotalPrice();
+        return $this;
     }
 
     public function getItems()
