@@ -36,11 +36,13 @@ class Order
     {
         $this->items = [];
         $this->totalPrice = 0;
+        $this->totalPriceGross = 0;
 
         /** @var Item $item */
         foreach ($items as $item) {
             $this->items[] = $this->setItemData($item);
             $this->totalPrice += $item->getTotalPrice();
+            $this->totalPriceGross += $item->getTotalPriceGross();
         }
     }
 
